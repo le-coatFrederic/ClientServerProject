@@ -1,0 +1,1 @@
+package domain.usecases.article;
