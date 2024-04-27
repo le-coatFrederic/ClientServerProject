@@ -6,13 +6,15 @@ public class Article {
     private String name;
     private String description;
     private float unitPrice;
+    private IArticle presenter;
 
-    public Article(int idParam) {
+    public Article(int idParam, IArticle presenter) {
         id = idParam;
         ean = null;
         name = "";
         description = "";
         unitPrice = 0;
+        this.presenter = presenter;
     }
     
     public int getId() {
@@ -46,4 +48,16 @@ public class Article {
     public void setPrice (final float priceParam) {
     	unitPrice = priceParam;
     }
+
+	public void setEan(String eanParam) {
+		if (eanParam == null || eanParam.length() > 13) {
+			throw new IllegalArgumentException();
+		}
+		
+		ean = eanParam;
+		
+		while (ean.length() < 13) {
+			ean.concat("0");
+		}
+	}
 }
