@@ -2,7 +2,7 @@ package domain.entities.entreposer;
 
 import java.util.ArrayList;
 
-import domain.entities.article.IArticle;
+import domain.entities.article.IArticleCRUD;
 import domain.entities.entrepot.IEntrepot;
 
 public class EntreposerAnnuaire {
@@ -27,7 +27,7 @@ public class EntreposerAnnuaire {
 		associationEntreposer.add(entreposer);
 	}
 	
-	public void addEntreposer(IArticle article, IEntrepot entrepot) {
+	public void addEntreposer(IArticleCRUD article, IEntrepot entrepot) {
 		if (article == null || entrepot == null) {
 			throw new IllegalArgumentException();
 		}

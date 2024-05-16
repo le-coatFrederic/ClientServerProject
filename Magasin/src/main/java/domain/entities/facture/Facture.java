@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import domain.entities.article.Article;
-import domain.entities.article.IArticle;
+import domain.entities.article.IArticleCRUD;
 
 public class Facture {
     private int numero;

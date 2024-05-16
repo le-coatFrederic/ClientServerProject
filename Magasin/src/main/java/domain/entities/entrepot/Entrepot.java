@@ -3,16 +3,16 @@ package domain.entities.entrepot;
 import java.util.ArrayList;
 import javax.management.InstanceNotFoundException;
 import domain.entities.article.Article;
-import domain.entities.article.IArticle;
+import domain.entities.article.IArticleCRUD;
 
 public class Entrepot implements IEntrepot {
 	private int id;
-	private ArrayList<IArticle> articles;
+	private ArrayList<IArticleCRUD> articles;
 	private String intitule;
 	
 	public Entrepot(int id) {
 		this.id = id;
-		articles = new ArrayList<IArticle>();
+		articles = new ArrayList<IArticleCRUD>();
 		intitule = "";
 	}
 
@@ -22,22 +22,22 @@ public class Entrepot implements IEntrepot {
 	}
 
 	@Override
-	public ArrayList<IArticle> getArticles() {
+	public ArrayList<IArticleCRUD> getArticles() {
 		return articles;
 	}
 
 	@Override
-	public IArticle getArticle(int index) {
+	public IArticleCRUD getArticle(int index) {
 		return articles.get(index);
 	}
 
 	@Override
-	public IArticle getArticle(IArticle article) {
+	public IArticleCRUD getArticle(IArticleCRUD article) {
 		return articles.get(articles.indexOf(article));
 	}
 
 	@Override
-	public void addArticle(IArticle article) {
+	public void addArticle(IArticleCRUD article) {
 		if (article == null) {
 			throw new NullPointerException();
 		} else {
@@ -59,7 +59,7 @@ public class Entrepot implements IEntrepot {
 	}
 
 	@Override
-	public void removeArticle(IArticle article) {
+	public void removeArticle(IArticleCRUD article) {
 		if (article == null) {
 			throw new NullPointerException();
 		}

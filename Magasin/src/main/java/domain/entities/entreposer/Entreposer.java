@@ -6,20 +6,20 @@ import java.security.InvalidParameterException;
 
 import javax.lang.model.element.QualifiedNameable;
 
-import domain.entities.article.IArticle;
+import domain.entities.article.IArticleCRUD;
 import domain.entities.entrepot.IEntrepot;
 
 public class Entreposer {
-	private IArticle article;
+	private IArticleCRUD article;
 	private IEntrepot entrepot;
 	private int quantity;
 	
-	public Entreposer( IArticle article, IEntrepot entrepot) {
+	public Entreposer( IArticleCRUD article, IEntrepot entrepot) {
 		this.article = article;
 		this.entrepot = entrepot;
 	}
 	
-	public IArticle getArticle() {
+	public IArticleCRUD getArticle() {
 		return article;
 	}
 	
@@ -27,7 +27,7 @@ public class Entreposer {
 		return entrepot;
 	}
 	
-	public void setArticle (IArticle article) {
+	public void setArticle (IArticleCRUD article) {
 		if (article == null) {
 			throw new NullPointerException();
 		}
