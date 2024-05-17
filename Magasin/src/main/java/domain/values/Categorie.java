@@ -12,7 +12,11 @@ public class Categorie {
 	}
 	
 	public void setCategorie(String categorie) {
-		intitule = categorie;
+		if (respectRules(categorie)) {
+			intitule = categorie;
+		}
+		
+		throw new IllegalArgumentException();
 	}
 	
 	private boolean respectRules(String categorie) {

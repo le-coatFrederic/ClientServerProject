@@ -11,16 +11,16 @@ public class Article {
     private float unitPrice;
     private Categorie categorie;
     
-    private IArticleCRUD presenter;
+    private IArticleHandler handler;
 
-    public Article(final Integer id, IArticleCRUD presenter) {
+    public Article(final Integer id, IArticleHandler handler) {
     	this.id = id;
         ean = null;
         name = "";
         description = "";
         unitPrice = 0;
         categorie = null;
-        this.presenter = presenter;
+        this.handler = handler;
     }
     
     public int getId() {
@@ -69,5 +69,14 @@ public class Article {
 	
 	public void setCategorie(final Categorie categorie) {
 		this.categorie = categorie;
+	}
+	
+	public void setHandler(final IArticleHandler handler) {		
+		this.handler = handler;
+	}
+	
+	@Override
+	public String toString() {
+		return id + " [" + ean + "] : " + name + " - " + description + " -> " + unitPrice;
 	}
 }

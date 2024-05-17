@@ -26,4 +26,9 @@ public class EAN {
 		
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return ean;
+	}
 }
