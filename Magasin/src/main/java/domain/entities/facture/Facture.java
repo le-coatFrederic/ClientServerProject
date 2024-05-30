@@ -5,24 +5,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import domain.entities.article.Article;
-import domain.entities.article.IArticleHandler;
+import domain.values.EAN;
 
 public class Facture {
     private int numero;
-    private Map<Article, Integer> articles;
+    private HashMap<EAN, Article> articles;
     private LocalDateTime dateDeCreation;
     
     public Facture(int numero) {
     	this.numero = numero;
     	dateDeCreation = LocalDateTime.now();
-    	articles = new HashMap<Article, Integer>();
+    	articles = new HashMap<EAN, Article>();
     }
     
     public int getNumero () {
     	return numero;
     }
     
-    public Map<Article, Integer> getArticles () {
+    public HashMap<EAN, Article> getArticles () {
     	return articles;
     }
     
