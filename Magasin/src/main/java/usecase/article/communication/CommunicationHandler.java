@@ -3,6 +3,7 @@ package usecase.article.communication;
 import java.util.ArrayList;
 
 import domain.entities.article.Article;
+import domain.values.EAN;
 import usecase.article.crud.CrudHandler;
 
 public class CommunicationHandler {
@@ -21,7 +22,31 @@ public class CommunicationHandler {
         this.serverCommunicatorDevice = serverCommunicatorDevice;
     }
 
-    public void receiveArticleFromServer() {
+    public void receiveArticlesFromServer() {
+        ArrayList<Article> articles = serverCommunicatorDevice.getArticles();
+        if (articles == null) {
+            throw new IllegalArgumentException();
+        }
+
+        for (Article article : articles) {
+            crudHandler.saveArticle(article);
+        }
+    }
+
+    public void sendArticlesToServer() {
+        ArrayList<Article> articles = crudHandler.getArticles();
+        if (articles == null) {
+            throw new IllegalArgumentException();
+        }
+
+        serverCommunicatorDevice.sendArticles(articles);
+    }
+
+    public void sendArticleToClient(EAN ean) {
+        if (ean == null) {
+            throw new IllegalArgumentException();
+        }
+
         
     }
 

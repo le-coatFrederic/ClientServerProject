@@ -1,5 +1,7 @@
 package usecase.article.crud;
 
+import java.util.ArrayList;
+
 import domain.entities.article.Article;
 import domain.values.EAN;
 
@@ -40,6 +42,15 @@ public class CrudHandler {
         }
 
         return article;
+    }
+
+    public ArrayList<Article> getArticles() {
+        ArrayList<Article> articles = dbServiceInput.getArticles();
+        if (articles == null) {
+            throw new IllegalArgumentException();
+        }
+        
+        return articles;
     }
 
     public int countArticles() {
