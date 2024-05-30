@@ -1,2 +1,2 @@
-package usecase.crudArticle;
+package usecase.article.crud;
 
