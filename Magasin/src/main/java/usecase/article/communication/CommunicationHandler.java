@@ -1,13 +1,19 @@
 package usecase.article.communication;
 
+import java.util.ArrayList;
+
+import domain.entities.article.Article;
 import usecase.article.crud.CrudHandler;
 
 public class CommunicationHandler {
     private CrudHandler crudHandler;
     private IServerCommunicator serverCommunicatorDevice;
+    private IClientCommunicator clientCommunicatorDevice;
 
-    public CommunicationHandler(final CrudHandler crudHandler, final IServerCommunicator serverCommunicatorDevice) {
-        if (crudHandler == null || serverCommunicatorDevice == null) {
+    public CommunicationHandler(final CrudHandler crudHandler,
+    final IServerCommunicator serverCommunicatorDevice,
+    final IClientCommunicator clientCommunicatorDevice) {
+        if (crudHandler == null || serverCommunicatorDevice == null || clientCommunicatorDevice == null) {
             throw new IllegalArgumentException();
         }
 
@@ -15,8 +21,8 @@ public class CommunicationHandler {
         this.serverCommunicatorDevice = serverCommunicatorDevice;
     }
 
-    public CrudHandler getCrudHandler() {
-        return crudHandler;
+    public void receiveArticleFromServer() {
+        
     }
 
     public void setCrudHandler(CrudHandler crudHandler) {
@@ -27,17 +33,19 @@ public class CommunicationHandler {
         this.crudHandler = crudHandler;
     }
 
-    public IServerCommunicator getCommunicatorDevice() {
-        return serverCommunicatorDevice;
-    }
-
-    public void setCommunicatorDevice(IServerCommunicator serverCommunicatorDevice) {
+    public void setServerCommunicatorDevice(IServerCommunicator serverCommunicatorDevice) {
         if (serverCommunicatorDevice == null) {
             throw new IllegalArgumentException();
         }
 
         this.serverCommunicatorDevice = serverCommunicatorDevice;
-    } 
+    }
 
-    
+    public void setClientCommunicatorDevice(IClientCommunicator ClientCommunicatorDevice) {
+        if (ClientCommunicatorDevice == null) {
+            throw new IllegalArgumentException();
+        }
+
+        this.clientCommunicatorDevice = ClientCommunicatorDevice;
+    }        
 }
