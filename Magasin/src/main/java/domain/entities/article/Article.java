@@ -9,6 +9,7 @@ public class Article {
     private EAN ean;
     private String name;
     private String description;
+    private int quantity;
     private float unitPrice;
     private ArrayList<Categorie> categories;
 
@@ -21,6 +22,7 @@ public class Article {
         name = "";
         description = "";
         unitPrice = 0;
+        quantity = 0;
         categories = new ArrayList<Categorie>();
     }
     
@@ -39,17 +41,13 @@ public class Article {
     public float getPrice() {
     	return unitPrice;
     }
+
+    public int getQuantity() {
+        return quantity;
+    }
     
     public ArrayList<Categorie> getCategorie() {
     	return categories;
-    }
-
-    public boolean categoriePresente(final Categorie categorieATester) {
-        if (categories.contains(categorieATester)) {
-            return true;
-        }
-
-        return false;
     }
     
     public void setName(final String nameParam) {
@@ -69,7 +67,18 @@ public class Article {
     }
     
     public void setPrice (final float priceParam) {
+        if (priceParam < 0) {
+            throw new IllegalArgumentException();
+        }
         unitPrice = priceParam;
+    }
+
+    public void setQuantity(final int quantity) {
+        if (quantity < 0) {
+            throw new IllegalArgumentException();
+        }
+
+        this.quantity = quantity;
     }
 	
 	public void addCategorie(final Categorie categorie) {
@@ -79,6 +88,14 @@ public class Article {
 
         categories.add(categorie);
 	}
+
+    public boolean categoriePresente(final Categorie categorieATester) {
+        if (categories.contains(categorieATester)) {
+            return true;
+        }
+
+        return false;
+    }
 	
 	@Override
 	public String toString() {
