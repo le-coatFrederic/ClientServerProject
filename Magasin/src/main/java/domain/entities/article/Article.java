@@ -1,30 +1,27 @@
 package domain.entities.article;
 
+import java.util.ArrayList;
+
 import domain.values.Categorie;
 import domain.values.EAN;
 
 public class Article {
-	private int id;
     private EAN ean;
     private String name;
     private String description;
     private float unitPrice;
-    private Categorie categorie;
-    
-    private IArticleHandler handler;
+    private ArrayList<Categorie> categories;
 
-    public Article(final Integer id, IArticleHandler handler) {
-    	this.id = id;
-        ean = null;
+    public Article(final EAN id) {
+        if (id == null) {
+            throw new IllegalArgumentException();
+        }
+
+        ean = id;
         name = "";
         description = "";
         unitPrice = 0;
-        categorie = null;
-        this.handler = handler;
-    }
-    
-    public int getId() {
-    	return id;
+        categories = new ArrayList<Categorie>();
     }
     
     public EAN getEan() {
@@ -43,40 +40,48 @@ public class Article {
     	return unitPrice;
     }
     
-    public Categorie getCategorie() {
-    	return categorie;
+    public ArrayList<Categorie> getCategorie() {
+    	return categories;
+    }
+
+    public boolean categoriePresente(final Categorie categorieATester) {
+        if (categories.contains(categorieATester)) {
+            return true;
+        }
+
+        return false;
     }
     
     public void setName(final String nameParam) {
+        if (nameParam == null) {
+            throw new IllegalArgumentException();
+        }
+
     	name = nameParam;
     }
     
     public void setDescription(final String descriptionParam) {
+        if (descriptionParam == null) {
+            throw new IllegalArgumentException();
+        }
+
     	description = descriptionParam;
     }
     
     public void setPrice (final float priceParam) {
-    	unitPrice = priceParam;
+        unitPrice = priceParam;
     }
+	
+	public void addCategorie(final Categorie categorie) {
+        if (categorie == null) {
+            throw new IllegalArgumentException();
+        }
 
-	public void setEan(final EAN eanParam) {
-		ean = eanParam;
-	}
-	
-	public void setEan(final String eanParam) {
-		ean.setEan(eanParam);
-	}
-	
-	public void setCategorie(final Categorie categorie) {
-		this.categorie = categorie;
-	}
-	
-	public void setHandler(final IArticleHandler handler) {		
-		this.handler = handler;
+        categories.add(categorie);
 	}
 	
 	@Override
 	public String toString() {
-		return id + " [" + ean + "] : " + name + " - " + description + " -> " + unitPrice;
+		return "ean : " + name + " - " + description + " -> " + unitPrice;
 	}
 }
