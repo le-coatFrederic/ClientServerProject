@@ -3,8 +3,8 @@ package usecase.article.communication;
 import java.util.ArrayList;
 
 import domain.entities.article.Article;
-import domain.values.Categorie;
-import domain.values.EAN;
+import domain.entities.values.Categorie;
+import domain.entities.values.EAN;
 
 public interface IClientCommunicator {
     public void magasinSendArticle(EAN ean);

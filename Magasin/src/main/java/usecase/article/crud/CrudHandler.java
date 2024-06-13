@@ -3,7 +3,7 @@ package usecase.article.crud;
 import java.util.ArrayList;
 
 import domain.entities.article.Article;
-import domain.values.EAN;
+import domain.entities.values.EAN;
 
 public class CrudHandler {
     private IDbServiceInput dbServiceInput;

@@ -3,7 +3,7 @@ package usecase.article.communication;
 import java.util.ArrayList;
 
 import domain.entities.article.Article;
-import domain.values.EAN;
+import domain.entities.values.EAN;
 import usecase.article.crud.CrudHandler;
 
 public class CommunicationHandler {

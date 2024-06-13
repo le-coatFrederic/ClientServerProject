@@ -2,8 +2,8 @@ package domain.entities.article;
 
 import java.util.ArrayList;
 
-import domain.values.Categorie;
-import domain.values.EAN;
+import domain.entities.values.Categorie;
+import domain.entities.values.EAN;
 
 public class Article {
     private EAN ean;

@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import domain.entities.article.Article;
-import domain.entities.paiement.PaiementMethod;
+import domain.entities.values.PaiementMethod;
 
 public class Facture {
 	private int numero;

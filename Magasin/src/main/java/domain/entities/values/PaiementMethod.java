@@ -1,4 +1,4 @@
-package domain.entities.paiement;
+package domain.entities.values;
 
 public enum PaiementMethod {
 	CarteBleue,

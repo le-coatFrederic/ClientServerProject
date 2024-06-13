@@ -1,4 +1,4 @@
-package domain.values;
+package domain.entities.values;
 
 public class EAN {
 	private String ean;
