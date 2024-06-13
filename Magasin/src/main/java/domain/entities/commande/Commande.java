@@ -1,18 +1,18 @@
-package domain.entities.facture;
+package src.main.java.domain.entities.commande;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import domain.entities.article.Article;
-import domain.entities.paiement.PaiementMethod;
+import src.main.java.domain.entities.article.Article;
+import src.main.java.domain.entities.paiement.PaiementMethod;
 
-public class Facture {
+public class Commande {
 	private int numero;
 	private ArrayList<Article> articles;
 	private LocalDateTime creationDateTime;
 	private PaiementMethod moyenPaiement;
 
-	public Facture(int numero) {
+	public Commande(int numero) {
 		this.numero = numero;
 		creationDateTime = LocalDateTime.now();
 		articles = new ArrayList<Article>();
