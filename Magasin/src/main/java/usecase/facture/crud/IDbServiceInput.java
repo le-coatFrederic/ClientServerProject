@@ -4,4 +4,6 @@ import domain.entities.facture.Facture;
 
 public interface IDbServiceInput {
     public Facture getFacture(String facture);
+
+    public Facture getFactures();
 }
