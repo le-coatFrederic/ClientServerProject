@@ -1,0 +1,64 @@
+import java.rmi.RemoteException; 
+import java.rmi.registry.Registry; 
+import java.rmi.registry.LocateRegistry; 
+import java.rmi.server.UnicastRemoteObject; 
+
+public class RMIConnexionServeur extends ImpClasse { 
+
+    public RMIConnexionServeur() {}
+
+    public static void main(String args[]) { 
+      try { 
+        
+         this.ExportArticles();
+         this.ExportFamilleArticles();
+         this.ExportCommandes();
+
+         System.out.println("Le Serveur est prêt..."); 
+      } catch (Exception e) { 
+         System.err.println(e.toString()); 
+         e.printStackTrace(); 
+      } 
+   } 
+
+   public ExportArticles() {
+      try {
+         ImpClasse obj = new Article(); 
+         Hello stub = (Article) UnicastRemoteObject.exportObject(obj, 0);  
+         Registry reg = LocateRegistry.getRegistry(); 
+   
+         reg.bind("Articles", stub); 
+      } catch (Exception e){
+         System.out.println(e);
+      }
+       
+   }
+   
+   public ExportFamilleArticles() {
+      try {
+         ImpClasse obj = new FamilleArticle(); 
+         Hello stub = (FamilleArticle) UnicastRemoteObject.exportObject(obj, 0);  
+         Registry reg = LocateRegistry.getRegistry(); 
+
+         reg.bind("FamilleArticles", stub); 
+      } catch (Exception e){
+         System.out.println(e);
+      }
+       
+   }
+   
+   public ExportCommandes() {
+      try {
+         ImpClasse obj = new FamilleCommande(); 
+         Hello stub = (Commande) UnicastRemoteObject.exportObject(obj, 0);  
+         Registry reg = LocateRegistry.getRegistry(); 
+
+         reg.bind("Commandes", stub);  
+      } catch (Exception e){
+         System.out.println(e);
+      }
+      
+   }
+
+
+}

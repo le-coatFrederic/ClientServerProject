@@ -1,0 +1,38 @@
+import java.rmi.registry.LocateRegistry; 
+import java.rmi.registry.Registry;  
+
+public class RMIClient { 
+
+   private RMIClient() {} 
+   
+   public static void main(String[] args) {  
+      try {  
+         Registry reg = LocateRegistry.getRegistry(null); 
+    
+         Hello stub = (Hello) reg.lookup("Hello"); 
+    
+         stub.showMsg(); 
+      } catch (Exception e) {
+         System.err.println(e.toString()); 
+         e.printStackTrace(); 
+      } 
+   } 
+
+   private getArticlesRMI() {
+      Registry reg = LocateRegistry.getRegistry(null); 
+      Article stub = (Article) reg.lookup("Articles"); 
+      stub.getArticles(); 
+   }
+   
+   private getFamilleArticlesRMI() {
+      Registry reg = LocateRegistry.getRegistry(null); 
+      FamilleArticle stub = (FamilleArticle) reg.lookup("FamilleArticles"); 
+      stub.getFamilleArticles(); 
+   }
+   
+   private getCommandes() {
+      Registry reg = LocateRegistry.getRegistry(null); 
+      Commande stub = (Commande) reg.lookup("Commandes"); 
+      stub.getCommandes(); 
+   }
+}
