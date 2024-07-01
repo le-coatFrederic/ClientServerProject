@@ -1,13 +1,12 @@
-package heptathlon.application.dbManager;
+package heptathlon.domain.dao;
 
 import java.util.List;
 
 import heptathlon.domain.entity.Shop;
 
-public interface IShopDbConfig {
+public interface IShopDao {
     public void addShop(Shop shop);
     public void updateShop(long oldShopId, Shop newShop);
     public void removeShop(long shopId);
-    public Shop detailShop(long shopId);
     public List<Shop> getAllShop();
 }

@@ -1,4 +1,4 @@
-package heptathlon.application.dbManager;
+package heptathlon.domain.dao;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import heptathlon.domain.entity.Invoice;
 import heptathlon.domain.entity.Shop;
 
-public interface IInvoiceDbManager {
+public interface IInvoiceDao {
     public void addInvoice(Invoice newInvoice);
     public void updateInvoice(long oldInvoiceId, Invoice newInvoice);
     public List<Invoice> getAllInvoices();
