@@ -2,6 +2,8 @@ package heptathlon.domain.usecase.db;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
+
 import heptathlon.application.dbManager.IMySqlDbCommand;
 import heptathlon.domain.dao.ICategoryDao;
 import heptathlon.domain.entity.Category;
@@ -42,6 +44,12 @@ public class CategoryDaoImpl implements ICategoryDao {
 
     @Override
     public List<Category> getAllCategory() {
-        return this.dbCommand.executeQuery(session -> session.createQuery("from Category", Category.class).list());
+        return this.dbCommand.executeQuery(session -> {
+            List<Category> categories = session.createQuery("from Category", Category.class).list();
+            for (Category category: categories) {
+                Hibernate.initialize(category.getArticles());
+            }
+            return categories;
+        });
     }
 }

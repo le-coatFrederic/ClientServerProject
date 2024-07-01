@@ -2,6 +2,8 @@ package heptathlon.domain.usecase.db;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
+
 import heptathlon.application.dbManager.IMySqlDbCommand;
 import heptathlon.domain.dao.IArticleDao;
 import heptathlon.domain.entity.Article;
@@ -34,6 +36,7 @@ public class ArticleDaoImpl implements IArticleDao {
         this.dbCommand.executeTransaction(session -> {
             Article article = session.get(Article.class, articleId);
             if (article != null) {
+
                 session.delete(article);
             }
         });
@@ -41,28 +44,46 @@ public class ArticleDaoImpl implements IArticleDao {
 
     @Override
     public List<Article> getAllArticles() {
-        return this.dbCommand.executeQuery(session -> session.createQuery("from Article", Article.class).list());
+        return this.dbCommand.executeQuery(session -> {
+            List<Article> articles = session.createQuery("from Article", Article.class).list();
+            for (Article article: articles) {
+                Hibernate.initialize(article.getCategories());
+            }
+            return articles;
+        });
     }
 
     @Override
     public List<Article> getAllArticlesByEAN(String ean) {
         return this.dbCommand.executeQuery(session -> {
-            return session.createQuery("from Article where ean like :ean", Article.class)
+            List<Article> articles = session.createQuery("from Article where ean like :ean", Article.class)
                 .setParameter("ean", ean)
                 .list();
+            for(Article article: articles) {
+                Hibernate.initialize(article.getCategories());
+            }
+            return articles;
         });
     }
 
     @Override
     public List<Article> getAllArticlesByIntitule(String intitule) {
         return this.dbCommand.executeQuery(session -> {
-            return session.createQuery("from Article where intitule like :intitule", Article.class)
+            List<Article> articles = session.createQuery("from Article where intitule like :intitule", Article.class)
                 .setParameter("intitule", intitule)
                 .list();
+            for(Article article: articles) {
+                Hibernate.initialize(article.getCategories());
+            }
+            return articles;
         });
     }
 
     public Article getArticleById(long id) {
-        return this.dbCommand.executeQuery(session -> session.get(Article.class, id));   
+        return this.dbCommand.executeQuery(session -> {
+            Article article = session.get(Article.class, id);
+            Hibernate.initialize(article.getCategories());
+            return article;
+        });   
     }
 }

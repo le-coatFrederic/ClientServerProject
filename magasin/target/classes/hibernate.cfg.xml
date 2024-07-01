@@ -5,7 +5,7 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://10.0.0.10:3307/hq</property>
+        <property name="hibernate.connection.url">jdbc:mysql://10.0.0.10:3308/magasin_amiens</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">upjv2024*</property>
 
@@ -29,6 +29,5 @@
         <mapping class="heptathlon.domain.entity.Article"/>
         <mapping class="heptathlon.domain.entity.Category"/>
         <mapping class="heptathlon.domain.entity.Invoice"/>
-        <mapping class="heptathlon.domain.entity.Shop"/>
     </session-factory>
 </hibernate-configuration>

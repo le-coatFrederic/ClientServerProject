@@ -2,6 +2,8 @@ package heptathlon.domain.usecase.db;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
+
 import heptathlon.application.dbManager.IMySqlDbCommand;
 import heptathlon.domain.dao.IShopDao;
 import heptathlon.domain.entity.Shop;
@@ -42,8 +44,12 @@ public class ShopDaoImpl implements IShopDao {
     @Override
     public List<Shop> getAllShop() {
         return this.dbCommand.executeQuery(session -> {
-            return session.createQuery("from Shop", Shop.class)
-            .list();
+            List<Shop> shops = session.createQuery("from Shop", Shop.class)
+                .list();
+            for (Shop shop: shops) {
+                Hibernate.initialize(shop.getInvoices());
+            }
+            return shops;
         });
     }
 
