@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,10 +29,6 @@ public class Invoice {
         inverseJoinColumns = @JoinColumn(name = "article_id")
     )
     private Set<Article> articles = new HashSet<>();
-
-    @ManyToOne
-    @JoinColumn(name = "shop_id")
-    private Shop shop;
 
     public Invoice() {
     }
@@ -63,10 +58,6 @@ public class Invoice {
         return articles;
     }
 
-    public Shop getShop() {
-        return this.shop;
-    }
-
     public void setId(long id) {
         this.id = id;
     }
@@ -94,18 +85,6 @@ public class Invoice {
     public void setArticles(Set<Article> articles) {
         this.articles = articles;
     }
-    
-    public void setShop(Shop shop) {
-        if (shop == null) {
-            throw new IllegalArgumentException();
-        }
-
-        if (this.shop != null) {
-            this.shop.removeInvoice(this);
-        }
-
-        this.shop = shop;
-    }
 
     public void addArticle(Article articleToAdd) {
         this.articles.add(articleToAdd);
@@ -119,7 +98,6 @@ public class Invoice {
         this.amount = newInvoice.getamount();
         this.fileLink = newInvoice.getFileLink();
         this.setArticles(newInvoice.getArticles());
-        this.setShop(newInvoice.getShop());
         this.date = newInvoice.getDate();
     }
 }

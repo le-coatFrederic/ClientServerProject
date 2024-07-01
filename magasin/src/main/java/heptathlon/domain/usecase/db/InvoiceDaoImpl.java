@@ -6,7 +6,6 @@ import java.util.List;
 import heptathlon.application.dbManager.IMySqlDbCommand;
 import heptathlon.domain.dao.IInvoiceDao;
 import heptathlon.domain.entity.Invoice;
-import heptathlon.domain.entity.Shop;
 
 public class InvoiceDaoImpl implements IInvoiceDao {
     private IMySqlDbCommand dbCommand;
@@ -34,15 +33,6 @@ public class InvoiceDaoImpl implements IInvoiceDao {
     @Override
     public List<Invoice> getAllInvoices() {
         return this.dbCommand.executeQuery(session -> session.createQuery("from Invoice", Invoice.class).list());
-    }
-
-    @Override
-    public List<Invoice> getAllInvoicesByShop(Shop shop) {
-        return this.dbCommand.executeQuery(session -> {
-            return session.createQuery("from Invoice where shop = :shop", Invoice.class)
-                .setParameter("shop", shop)
-                .list();
-        });
     }
 
     @Override
@@ -89,5 +79,4 @@ public class InvoiceDaoImpl implements IInvoiceDao {
             return invoice;
         });
     }
-
 }
