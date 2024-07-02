@@ -21,9 +21,10 @@ public class Main {
 
             IRmiSenderToClient senderToClient = new RmiSenderToClientImpl(articleDao, categoryDao);
 
-            System.setProperty("java.rmi.server.hostname", "10.0.0.10");
-            LocateRegistry.createRegistry(1099);
-            Naming.rebind("//10.0.0.10/ClientGet", senderToClient);
+            String ip = "localhost";
+            System.setProperty("java.rmi.server.hostname", ip);
+            LocateRegistry.createRegistry(20001);
+            Naming.rebind("//" + ip + "/ClientGet", senderToClient);
 
             System.out.println("Server is running...");
         } catch (Exception e) {
