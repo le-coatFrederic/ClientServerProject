@@ -7,6 +7,7 @@ import org.hibernate.Hibernate;
 import heptathlon.application.dbManager.IMySqlDbCommand;
 import heptathlon.domain.dao.IArticleDao;
 import heptathlon.domain.entity.Article;
+import heptathlon.domain.entity.Category;
 
 public class ArticleDaoImpl implements IArticleDao {
     private IMySqlDbCommand dbCommand;
@@ -85,5 +86,14 @@ public class ArticleDaoImpl implements IArticleDao {
             Hibernate.initialize(article.getCategories());
             return article;
         });   
+    }
+
+    @Override
+    public List<Article> getAllArticlesByCategories(List<Category> categories) {
+        return this.dbCommand.executeQuery(session -> {
+            return session.createQuery("select a from Article a join a.categories c where c in :categories", Article.class)
+                .setParameter("categories", categories)
+                .list();
+        });
     }
 }
