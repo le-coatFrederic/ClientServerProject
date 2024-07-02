@@ -21,9 +21,9 @@ public class Main {
 
             IRmiSenderToClient senderToClient = new RmiSenderToClientImpl(articleDao, categoryDao);
 
-            String ip = "93.8.39.46:20001";
+            String ip = "93.8.39.46:9010";
             System.setProperty("java.rmi.server.hostname", ip);
-            LocateRegistry.createRegistry(20001);
+            LocateRegistry.createRegistry(9010);
             Naming.rebind("//" + ip + "/ClientGet", senderToClient);
 
             System.out.println("Server is running...");
