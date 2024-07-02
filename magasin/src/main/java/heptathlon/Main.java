@@ -21,8 +21,10 @@ public class Main {
 
             IRmiSenderToClient senderToClient = new RmiSenderToClientImpl(articleDao, categoryDao);
 
+            // Start RMI registry on localhost
             LocateRegistry.createRegistry(1099);
-            Naming.rebind("rmi://localhost:1099/client_get", senderToClient);
+            // Bind the remote object to the local registry
+            Naming.rebind("//localhost/ClientGet", senderToClient);
 
             System.out.println("Server is running...");
         } catch (Exception e) {

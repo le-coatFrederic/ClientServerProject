@@ -18,6 +18,7 @@ public class RmiSenderToClientImpl extends UnicastRemoteObject implements IRmiSe
     private ICategoryDao categoryDAO;
 
     public RmiSenderToClientImpl(IArticleDao articleDAO, ICategoryDao categoryDAO) throws RemoteException {
+        super();
         this.articleDAO = articleDAO;
         this.categoryDAO = categoryDAO;
     }
