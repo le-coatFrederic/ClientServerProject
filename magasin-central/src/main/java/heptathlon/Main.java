@@ -7,10 +7,6 @@ public class Main {
         try {
             String serverIP = "localhost:1099"; 
             IRmiSenderToClient communicationService = (IRmiSenderToClient) Naming.lookup("//" + serverIP + "/ClientGet");
-
-            String serverIP = "localhost"; 
-            IRmiSenderToClient service = (IRmiSenderToClient) Naming.lookup("//" + serverIP + "/ClientGet");
-
         } catch (Exception e) {
             e.printStackTrace();
         }
