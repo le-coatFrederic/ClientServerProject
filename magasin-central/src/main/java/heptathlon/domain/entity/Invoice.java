@@ -36,6 +36,9 @@ public class Invoice {
     private Shop shop;
 
     public Invoice() {
+        this.fileLink = "";
+        this.amount = 0;
+        this.date = LocalDateTime.now();
     }
 
     public Invoice(String fileLink, double amount) {
@@ -109,6 +112,7 @@ public class Invoice {
 
     public void addArticle(Article articleToAdd) {
         this.articles.add(articleToAdd);
+        this.amount += articleToAdd.getPrice();
     }
 
     public void update(Invoice newInvoice) {

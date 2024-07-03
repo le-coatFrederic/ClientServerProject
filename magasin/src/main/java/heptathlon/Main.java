@@ -3,14 +3,18 @@ package heptathlon;
 import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
+import heptathlon.application.communicationManager.CommunicationWithClientImpl;
+import heptathlon.application.communicationManager.IRmiSenderToClient;
+import heptathlon.application.communicationManager.RmiSenderToClientImpl;
 import heptathlon.application.dbManager.IMySqlDbCommand;
 import heptathlon.application.dbManager.MySqlDbCommandHibernate;
-import heptathlon.application.rmiManager.IRmiSenderToClient;
-import heptathlon.application.rmiManager.RmiSenderToClientImpl;
 import heptathlon.domain.dao.IArticleDao;
 import heptathlon.domain.dao.ICategoryDao;
+import heptathlon.domain.dao.IInvoiceDao;
+import heptathlon.domain.usecase.communication.ICommunicationWithClient;
 import heptathlon.domain.usecase.db.ArticleDaoImpl;
 import heptathlon.domain.usecase.db.CategoryDaoImpl;
+import heptathlon.domain.usecase.db.InvoiceDaoImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,12 +22,14 @@ public class Main {
             IMySqlDbCommand dbCommand = new MySqlDbCommandHibernate();
             IArticleDao articleDao = new ArticleDaoImpl(dbCommand);
             ICategoryDao categoryDao = new CategoryDaoImpl(dbCommand);
+            IInvoiceDao invoiceDao = new InvoiceDaoImpl(dbCommand);
 
-            IRmiSenderToClient senderToClient = new RmiSenderToClientImpl(articleDao, categoryDao);
+            ICommunicationWithClient communicationWithClient = new CommunicationWithClientImpl(articleDao, categoryDao, invoiceDao);
+            IRmiSenderToClient rmiSenderToClient = new RmiSenderToClientImpl(communicationWithClient);
 
             String ip = "localhost";
             LocateRegistry.createRegistry(1099);
-            Naming.rebind("//" + ip + "/ClientGet", senderToClient);
+            Naming.rebind("//" + ip + "/ClientGet", rmiSenderToClient);
 
             System.out.println("Server is running...");
         } catch (Exception e) {

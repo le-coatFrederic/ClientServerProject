@@ -10,6 +10,7 @@ public class ArticleAndCategoryDTO implements Serializable {
     private long id;
     private String ean;
     private String intitule;
+    private double price;
     private Set<CategoryDTO> categories;
 
     public ArticleAndCategoryDTO() {}
@@ -33,6 +34,10 @@ public class ArticleAndCategoryDTO implements Serializable {
         return intitule;
     }
 
+    public double getPrice() {
+        return this.price;
+    }
+
     public Set<CategoryDTO> getCategories() {
         return categories;
     }
@@ -49,12 +54,17 @@ public class ArticleAndCategoryDTO implements Serializable {
         this.intitule = intitule;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public void setCategories(Set<CategoryDTO> categories) {
         this.categories = categories;
     }
 
     @Override
     public String toString() {
-        return "ArticleDTO [id=" + this.id + ", ean=" + this.ean + ", intitule=" + this.intitule + ", categories=" + this.categories + "]";
+        return "ArticleAndCategoryDTO [id=" + id + ", ean=" + ean + ", intitule=" + intitule + ", price=" + price
+                + ", categories=" + categories + "]";
     }
 }
