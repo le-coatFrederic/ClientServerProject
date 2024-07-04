@@ -7,16 +7,17 @@ import java.util.stream.Collectors;
 
 import heptathlon.domain.entity.Invoice;
 
-public class InvoiceDTO implements Serializable {
+public class InvoiceToHQDTO implements Serializable {
     private long id;
     private double amount;
     private String fileLink;
     private LocalDateTime date;
     private Set<ArticleAndCategoryDTO> articles;
+    private ShopDTO shop;
 
-    public InvoiceDTO() {}
+    public InvoiceToHQDTO() {}
 
-    public InvoiceDTO(Invoice invoice) {
+    public InvoiceToHQDTO(Invoice invoice, ShopDTO shop) {
         this.id = invoice.getId();
         this.amount = invoice.getamount();
         this.fileLink = invoice.getFileLink();
@@ -24,6 +25,7 @@ public class InvoiceDTO implements Serializable {
         invoice.getArticles().forEach(article -> {
             this.articles.add(new ArticleAndCategoryDTO(article));
         });
+        this.shop = shop;
     }
 
     public long getId() {
@@ -46,6 +48,10 @@ public class InvoiceDTO implements Serializable {
         this.id = id;
     }
 
+    public ShopDTO getShop() {
+        return shop;
+    }
+
     public void setAmount(double amount) {
         this.amount = amount;
     }
@@ -57,11 +63,15 @@ public class InvoiceDTO implements Serializable {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
-    
+
+    public void setShop(ShopDTO shop) {
+        this.shop = shop;
+    }
+
     @Override
     public String toString() {
-        return "InvoiceDTO [id=" + id + ", amount=" + amount + ", fileLink=" + fileLink + ", date=" + date
-                + ", articles=" + articles + "]";
+        return "InvoiceToHQDTO [id=" + id + ", amount=" + amount + ", fileLink=" + fileLink + ", date=" + date
+                + ", articles=" + articles + ", shop=" + shop + "]";
     }
 
     public Invoice toInvoice() {

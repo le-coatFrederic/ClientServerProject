@@ -1,11 +1,17 @@
 package heptathlon;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import heptathlon.application.communicationManager.IRmiSenderToClient;
 import heptathlon.domain.dto.ArticleAndCategoryDTO;
+import heptathlon.domain.dto.InvoiceDTO;
+import heptathlon.domain.entity.Invoice;
 import heptathlon.domain.usecase.display.DisplayManager;
 
 public class Main {
@@ -21,7 +27,6 @@ public class Main {
             int choice;
 
             do {
-                displayManager.showMenu();
                 choice = sc.nextInt();
 
                 switch (choice) {
@@ -40,12 +45,41 @@ public class Main {
                         displayManager.showAllArticle(articleList);
                     }
                     case 3 -> {
+                        ArrayList<ArticleAndCategoryDTO> articleList = new ArrayList<>();
+                        ArrayList<Integer> listArticlesID = new ArrayList<>();
+                        int articleChoice;
+                        do {
+                            System.out.println("Saisissez l'ID de l'article que vous voulez acheter (0 pour finir)");
+                            articleChoice = sc.nextInt();
 
+                            if (articleChoice != 0 && articleChoice < 51) {
+                                listArticlesID.add(articleChoice);
+                            }
+                        } while (articleChoice != 0);
+
+                        listArticlesID.forEach(id -> {
+                            try {
+                                articleList.add(communicationService.getAllArticles().get(id));
+                            } catch (RemoteException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+                        Invoice commande = new Invoice();
+                        commande.setId(new Random().nextLong());
+                        articleList.forEach(article -> {
+                            commande.addArticle(article.toArticle());
+                        });
+                        commande.setDate(LocalDateTime.now());
+                        commande.setFileLink("/");
+                        InvoiceDTO invoiceDTO = new InvoiceDTO(commande);
+                        communicationService.sendInvoice(invoiceDTO);
                     }
                     case 4 -> System.out.println("Quitter le programme...");
                     default -> System.out.println("Choix invalide, veuillez réessayer.");
 
                 }
+                displayManager.showMenu();
 
             } while (choice != 4);
             sc.close();
