@@ -1,0 +1,62 @@
+package heptathlon.domain.entity;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class Category {
+    private long idCategory;
+    private String intitule;
+
+    private Set<Article> articles = new HashSet<>();
+
+    public Category() {}
+
+    public Category(String intitule) {
+        this.intitule = intitule;
+    }
+
+    public long getId() {
+        return idCategory;
+    }
+
+    public String getIntitule() {
+        return intitule;
+    }
+
+    public Set<Article> getArticles() {
+        return this.articles;
+    }
+
+    public void setId(long id) {
+        this.idCategory = id;
+    }
+
+    public void setIntitule(String intitule) {
+        if (intitule.isBlank()) {
+            throw new IllegalArgumentException();
+        }
+        
+        this.intitule = intitule;
+    }
+
+    public void setArticles(Set<Article> articles) {
+        this.articles = articles;
+    }
+
+    public void addArticle(Article article) {
+        this.articles.add(article);
+    }
+
+    public void removeArticle(Article article) {
+        this.articles.remove(article);
+    }
+
+    public void update(Category newCategory) {
+        if (newCategory == null) {
+            throw new IllegalArgumentException();
+        }
+
+        this.setArticles(newCategory.getArticles());
+        this.setIntitule(newCategory.getIntitule());
+    }
+}

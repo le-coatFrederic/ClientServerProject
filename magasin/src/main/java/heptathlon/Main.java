@@ -31,7 +31,9 @@ public class Main {
             LocateRegistry.createRegistry(1099);
             Naming.rebind("//" + ip + "/ClientGet", rmiSenderToClient);
 
-            System.out.println("Server is running...");
+            String ipHQ = "localhost";
+            ICommunicationWithClient service = (ICommunicationWithClient) Naming.lookup("//" + ipHQ + "/MagasinGet");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
