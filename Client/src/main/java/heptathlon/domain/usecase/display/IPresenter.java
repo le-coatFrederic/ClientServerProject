@@ -1,10 +1,10 @@
-package heptathlon.domain.usecase;
+package heptathlon.domain.usecase.display;
 
 import java.util.List;
 
 import heptathlon.domain.dto.ArticleAndCategoryDTO;
 
-public interface IDisplay {
+public interface IPresenter {
     void showMenu();
     void showSearchMenu();
     void showAllArticle(List<ArticleAndCategoryDTO> articles);
