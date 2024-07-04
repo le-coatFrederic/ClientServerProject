@@ -9,6 +9,7 @@ import heptathlon.domain.dao.IInvoiceDao;
 import heptathlon.domain.dto.ArticleAndCategoryDTO;
 import heptathlon.domain.dto.CategoryDTO;
 import heptathlon.domain.dto.InvoiceDTO;
+import heptathlon.domain.dto.InvoiceToHQDTO;
 import heptathlon.domain.entity.Article;
 import heptathlon.domain.entity.Category;
 import heptathlon.domain.entity.Invoice;
@@ -38,7 +39,7 @@ public class CommunicationWithShopImpl implements ICommunicationWithShop {
     }
 
     @Override
-    public void sendInvoices(List<InvoiceDTO> invoicesDTO) {
+    public void sendInvoices(List<InvoiceToHQDTO> invoicesDTO) {
         invoicesDTO.forEach(invoiceDto -> {
             Invoice invoice = invoiceDto.toInvoice();
             this.invoiceDao.addInvoice(invoice);

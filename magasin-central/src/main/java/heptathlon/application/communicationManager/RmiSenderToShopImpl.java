@@ -7,6 +7,7 @@ import java.util.List;
 import heptathlon.domain.dto.ArticleAndCategoryDTO;
 import heptathlon.domain.dto.CategoryDTO;
 import heptathlon.domain.dto.InvoiceDTO;
+import heptathlon.domain.dto.InvoiceToHQDTO;
 import heptathlon.domain.usecase.communication.ICommunicationWithShop;
 
 public class RmiSenderToShopImpl extends UnicastRemoteObject implements IRmiCommunicationWithShop {
@@ -28,7 +29,7 @@ public class RmiSenderToShopImpl extends UnicastRemoteObject implements IRmiComm
     }
 
     @Override
-    public void sendInvoices(List<InvoiceDTO> invoices) throws RemoteException {
+    public void sendInvoices(List<InvoiceToHQDTO> invoices) throws RemoteException {
         this.communicator.sendInvoices(invoices);
     }
     

@@ -12,6 +12,8 @@ D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\ma
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\dto\ArticleAndCategoryDTO.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\dto\CategoryDTO.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\dto\InvoiceDTO.java
+D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\dto\InvoiceToHQDTO.java
+D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\dto\ShopDTO.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\entity\Article.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\entity\Category.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\entity\Invoice.java

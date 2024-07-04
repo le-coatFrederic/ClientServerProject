@@ -60,7 +60,7 @@ public class CommunicationWithClientImpl implements ICommunicationWithClient {
 
     @Override
     public List<ArticleAndCategoryDTO> getAllArticlesByIntitules(String intitule) {
-        List<Article> articles = articleDAO.getAllArticles();
+        List<Article> articles = articleDAO.getAllArticlesByIntitule(intitule);
         return articles.stream().map(ArticleAndCategoryDTO::new).collect(Collectors.toList());
     }
 

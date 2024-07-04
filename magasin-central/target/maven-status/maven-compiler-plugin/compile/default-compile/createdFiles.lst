@@ -4,8 +4,10 @@ heptathlon\application\communicationManager\IRmiCommunicationWithShop.class
 heptathlon\domain\dao\IArticleDao.class
 heptathlon\domain\entity\Shop.class
 heptathlon\domain\usecase\db\ShopDaoImpl.class
+heptathlon\domain\dto\ShopDTO.class
 heptathlon\domain\dao\IInvoiceDao.class
 heptathlon\domain\usecase\db\CategoryDaoImpl.class
+heptathlon\domain\dto\InvoiceToHQDTO.class
 heptathlon\Main.class
 heptathlon\domain\dto\CategoryDTO.class
 heptathlon\application\communicationManager\CommunicationWithShopImpl.class

@@ -11,6 +11,7 @@ import heptathlon.application.dbManager.MySqlDbCommandHibernate;
 import heptathlon.domain.dao.IArticleDao;
 import heptathlon.domain.dao.ICategoryDao;
 import heptathlon.domain.dao.IInvoiceDao;
+import heptathlon.domain.dto.ShopDTO;
 import heptathlon.domain.usecase.communication.ICommunicationWithShop;
 import heptathlon.domain.usecase.db.ArticleDaoImpl;
 import heptathlon.domain.usecase.db.CategoryDaoImpl;

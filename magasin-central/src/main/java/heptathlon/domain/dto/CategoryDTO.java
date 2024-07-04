@@ -37,5 +37,13 @@ public class CategoryDTO implements Serializable {
     public String toString() {
         return "CategoryDTO [id=" + id + ", name=" + name + "]";
     }
+
+    public Category toCategory() {
+        Category category = new Category();
+        category.setId(this.getId());
+        category.setIntitule(this.getName());
+
+        return category;
+    }
     
 }

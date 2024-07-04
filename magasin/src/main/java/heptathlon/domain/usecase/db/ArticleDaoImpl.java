@@ -70,7 +70,7 @@ public class ArticleDaoImpl implements IArticleDao {
     @Override
     public List<Article> getAllArticlesByIntitule(String intitule) {
         return this.dbCommand.executeQuery(session -> {
-            List<Article> articles = session.createQuery("from Article where intitule like :intitule", Article.class)
+            List<Article> articles = session.createQuery("from Article where intitule like '%:intitule%'", Article.class)
                 .setParameter("intitule", intitule)
                 .list();
             for(Article article: articles) {

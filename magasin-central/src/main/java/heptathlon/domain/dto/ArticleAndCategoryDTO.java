@@ -67,4 +67,18 @@ public class ArticleAndCategoryDTO implements Serializable {
         return "ArticleAndCategoryDTO [id=" + id + ", ean=" + ean + ", intitule=" + intitule + ", price=" + price
                 + ", categories=" + categories + "]";
     }
+
+    public Article toArticle() {
+        Article article = new Article();
+        article.setId(this.getId());
+        article.setEan(this.getEan());
+        article.setIntitule(this.getIntitule());
+        article.setPrice(this.getPrice());
+        this.getCategories().forEach(category -> {
+            article.addCategory(category.toCategory());
+        });
+        
+        return article;
+    }
+    
 }
