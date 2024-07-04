@@ -18,21 +18,22 @@ import heptathlon.domain.usecase.db.InvoiceDaoImpl;
 
 public class Main {
     public static void main(String[] args) {
-        try {
             IMySqlDbCommand dbCommand = new MySqlDbCommandHibernate();
             IArticleDao articleDao = new ArticleDaoImpl(dbCommand);
             ICategoryDao categoryDao = new CategoryDaoImpl(dbCommand);
             IInvoiceDao invoiceDao = new InvoiceDaoImpl(dbCommand);
 
+        try {
             ICommunicationWithClient communicationWithClient = new CommunicationWithClientImpl(articleDao, categoryDao, invoiceDao);
             IRmiSenderToClient rmiSenderToClient = new RmiSenderToClientImpl(communicationWithClient);
 
-            String ip = "localhost";
-            LocateRegistry.createRegistry(1099);
+            String ip = "localhost:30000";
+            LocateRegistry.createRegistry(30000);
             Naming.rebind("//" + ip + "/ClientGet", rmiSenderToClient);
 
             String ipHQ = "localhost";
-            ICommunicationWithClient service = (ICommunicationWithClient) Naming.lookup("//" + ipHQ + "/MagasinGet");
+            IRmiCommunicationWithShop service = (IRmiCommunicationWithShop) Naming.lookup("//" + ipHQ + "/MagasinGet");
+            service.getAllArticles().forEach(article -> System.out.println(article));
 
         } catch (Exception e) {
             e.printStackTrace();
