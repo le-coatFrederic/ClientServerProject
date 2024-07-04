@@ -1,5 +1,6 @@
 package heptathlon.domain.usecase.db;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Hibernate;
@@ -47,7 +48,7 @@ public class ArticleDaoImpl implements IArticleDao {
     public List<Article> getAllArticles() {
         return this.dbCommand.executeQuery(session -> {
             List<Article> articles = session.createQuery("from Article", Article.class).list();
-            for (Article article: articles) {
+            for (Article article : articles) {
                 Hibernate.initialize(article.getCategories());
             }
             return articles;
@@ -58,9 +59,9 @@ public class ArticleDaoImpl implements IArticleDao {
     public List<Article> getAllArticlesByEAN(String ean) {
         return this.dbCommand.executeQuery(session -> {
             List<Article> articles = session.createQuery("from Article where ean like :ean", Article.class)
-                .setParameter("ean", ean)
-                .list();
-            for(Article article: articles) {
+                    .setParameter("ean", ean)
+                    .list();
+            for (Article article : articles) {
                 Hibernate.initialize(article.getCategories());
             }
             return articles;
@@ -69,11 +70,22 @@ public class ArticleDaoImpl implements IArticleDao {
 
     @Override
     public List<Article> getAllArticlesByIntitule(String intitule) {
+        System.out.println(intitule);
+
         return this.dbCommand.executeQuery(session -> {
-            List<Article> articles = session.createQuery("from Article where intitule like :intitule", Article.class)
-                .setParameter("intitule", intitule)
-                .list();
-            for(Article article: articles) {
+            List<Article> articlesTMP = session
+                    .createQuery("from Article where intitule like :intitule", Article.class)
+                    .setParameter("intitule", "%" + intitule + "%")
+                    .list();
+
+            List<Article> articles = new ArrayList<>();
+            articlesTMP.forEach(
+                    article -> {
+                        if (article.getIntitule().contains(intitule)) {
+                            articles.add(article);
+                        }
+                    });
+            for (Article article : articles) {
                 Hibernate.initialize(article.getCategories());
             }
             return articles;
@@ -85,15 +97,16 @@ public class ArticleDaoImpl implements IArticleDao {
             Article article = session.get(Article.class, id);
             Hibernate.initialize(article.getCategories());
             return article;
-        });   
+        });
     }
 
     @Override
     public List<Article> getAllArticlesByCategories(List<Category> categories) {
         return this.dbCommand.executeQuery(session -> {
-            return session.createQuery("select a from Article a join a.categories c where c in :categories", Article.class)
-                .setParameter("categories", categories)
-                .list();
+            return session
+                    .createQuery("select a from Article a join a.categories c where c in :categories", Article.class)
+                    .setParameter("categories", categories)
+                    .list();
         });
     }
 }

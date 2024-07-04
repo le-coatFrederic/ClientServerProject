@@ -5,12 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 import heptathlon.application.communicationManager.IRmiSenderToClient;
-import heptathlon.application.display.TerminalControllerImpl;
-import heptathlon.application.display.TerminalPresenterImpl;
 import heptathlon.domain.dto.ArticleAndCategoryDTO;
 import heptathlon.domain.usecase.display.DisplayManager;
-import heptathlon.domain.usecase.display.IController;
-import heptathlon.domain.usecase.display.IPresenter;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,24 +16,28 @@ public class Main {
                     .lookup("//" + serverIP + "/ClientGet");
             Scanner sc = new Scanner(System.in);
 
-            IController controller = new TerminalControllerImpl();
-            IPresenter presenter = new TerminalPresenterImpl();
-            DisplayManager displayManager = new DisplayManager(presenter);
+            DisplayManager displayManager = new DisplayManager();
 
             int choice;
-            presenter.showMenu();
 
             do {
-                
+                displayManager.showMenu();
                 choice = sc.nextInt();
 
                 switch (choice) {
 
                     case 1 -> {
+                        System.out.println("Cherchez un article avec son nom");
+                        String name = sc.next();
+                        List<ArticleAndCategoryDTO> foundArticles = communicationService.getAllArticlesByIntitules(
+                                name);
+                        foundArticles.forEach(article -> {
+                            System.out.println("ID  " + article.getId() + " : Article : " + article.getIntitule());
+                        });
                     }
                     case 2 -> {
                         List<ArticleAndCategoryDTO> articleList = communicationService.getAllArticles();
-                        new TerminalPresenterImpl().showAllArticle(articleList);
+                        displayManager.showAllArticle(articleList);
                     }
                     case 3 -> {
 
