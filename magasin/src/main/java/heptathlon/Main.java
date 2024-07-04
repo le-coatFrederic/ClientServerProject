@@ -4,6 +4,7 @@ import java.rmi.Naming;
 import java.rmi.registry.LocateRegistry;
 
 import heptathlon.application.communicationManager.CommunicationWithClientImpl;
+import heptathlon.application.communicationManager.IRmiCommunicationWithShop;
 import heptathlon.application.communicationManager.IRmiSenderToClient;
 import heptathlon.application.communicationManager.RmiSenderToClientImpl;
 import heptathlon.application.dbManager.IMySqlDbCommand;
@@ -18,10 +19,10 @@ import heptathlon.domain.usecase.db.InvoiceDaoImpl;
 
 public class Main {
     public static void main(String[] args) {
-            IMySqlDbCommand dbCommand = new MySqlDbCommandHibernate();
-            IArticleDao articleDao = new ArticleDaoImpl(dbCommand);
-            ICategoryDao categoryDao = new CategoryDaoImpl(dbCommand);
-            IInvoiceDao invoiceDao = new InvoiceDaoImpl(dbCommand);
+        IMySqlDbCommand dbCommand = new MySqlDbCommandHibernate();
+        IArticleDao articleDao = new ArticleDaoImpl(dbCommand);
+        ICategoryDao categoryDao = new CategoryDaoImpl(dbCommand);
+        IInvoiceDao invoiceDao = new InvoiceDaoImpl(dbCommand);
 
         try {
             ICommunicationWithClient communicationWithClient = new CommunicationWithClientImpl(articleDao, categoryDao, invoiceDao);

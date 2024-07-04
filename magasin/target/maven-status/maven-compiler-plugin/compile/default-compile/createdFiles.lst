@@ -2,6 +2,7 @@ heptathlon\domain\entity\Invoice.class
 heptathlon\domain\dao\ICategoryDao.class
 heptathlon\domain\dto\InvoiceDTO.class
 heptathlon\application\dbManager\TransactionAction.class
+heptathlon\application\communicationManager\IRmiCommunicationWithShop.class
 heptathlon\domain\dao\IArticleDao.class
 heptathlon\domain\usecase\db\ArticleDaoImpl.class
 heptathlon\domain\usecase\db\InvoiceDaoImpl.class

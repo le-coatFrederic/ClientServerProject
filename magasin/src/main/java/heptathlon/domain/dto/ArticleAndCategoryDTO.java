@@ -67,4 +67,5 @@ public class ArticleAndCategoryDTO implements Serializable {
         return "ArticleAndCategoryDTO [id=" + id + ", ean=" + ean + ", intitule=" + intitule + ", price=" + price
                 + ", categories=" + categories + "]";
     }
+    
 }

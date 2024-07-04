@@ -1,0 +1,13 @@
+heptathlon\domain\entity\Invoice.class
+heptathlon\domain\dto\InvoiceDTO.class
+heptathlon\domain\usecase\IController.class
+heptathlon\application\display\TerminalController.class
+heptathlon\domain\dto\ArticleAndCategoryDTO.class
+heptathlon\domain\entity\Category.class
+heptathlon\application\display\TerminalPresenter.class
+heptathlon\application\communicationManager\IRmiSenderToClient.class
+heptathlon\domain\usecase\IDisplay.class
+heptathlon\domain\entity\Article.class
+heptathlon\Main.class
+heptathlon\domain\dto\CategoryDTO.class
+heptathlon\domain\value\ControllerState.class

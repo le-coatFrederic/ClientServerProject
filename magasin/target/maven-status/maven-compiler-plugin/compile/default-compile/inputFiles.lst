@@ -1,4 +1,5 @@
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin\src\main\java\heptathlon\application\communicationManager\CommunicationWithClientImpl.java
+D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin\src\main\java\heptathlon\application\communicationManager\IRmiCommunicationWithShop.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin\src\main\java\heptathlon\application\communicationManager\IRmiSenderToClient.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin\src\main\java\heptathlon\application\communicationManager\RmiSenderToClientImpl.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin\src\main\java\heptathlon\application\dbManager\IMySqlDbCommand.java

@@ -25,10 +25,10 @@ public class Main {
 
         try {
             ICommunicationWithShop communicationWithShop = new CommunicationWithShopImpl(articleDao, categoryDao, invoiceDao);
-            IRmiCommunicationWithShop rmiCommunicationWithShop = RmiSenderToShopImpl(communicationWithShop);
+            IRmiCommunicationWithShop rmiCommunicationWithShop = new RmiSenderToShopImpl(communicationWithShop);
             
             String ip = "localhost";
-            LocateRegistry.createRegistry(1098);
+            LocateRegistry.createRegistry(1099);
             Naming.rebind("//" + ip + "/MagasinGet", rmiCommunicationWithShop);
 
             System.out.println("Server is running...");

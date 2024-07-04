@@ -56,4 +56,6 @@ public class InvoiceDTO implements Serializable {
     public String toString() {
         return "InvoiceDTO [id=" + id + ", amount=" + amount + ", fileLink=" + fileLink + ", date=" + date + "]";
     }
+    
+    
 }

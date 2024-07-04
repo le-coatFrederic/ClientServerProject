@@ -1,4 +1,6 @@
-D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\application\communicationManager\IRmiSenderToClient.java
+D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\application\communicationManager\CommunicationWithShopImpl.java
+D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\application\communicationManager\IRmiCommunicationWithShop.java
+D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\application\communicationManager\RmiSenderToShopImpl.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\application\dbManager\IMySqlDbCommand.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\application\dbManager\MySqlDbCommandHibernate.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\application\dbManager\QueryAction.java
@@ -14,6 +16,7 @@ D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\ma
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\entity\Category.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\entity\Invoice.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\entity\Shop.java
+D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\usecase\communication\ICommunicationWithShop.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\usecase\db\ArticleDaoImpl.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\usecase\db\CategoryDaoImpl.java
 D:\Users\Utilisateur\Documents\Github\ClientServerProject\magasin-central\src\main\java\heptathlon\domain\usecase\db\InvoiceDaoImpl.java
