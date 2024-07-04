@@ -1,11 +1,14 @@
 package heptathlon.domain.usecase.display;
 
-public class DisplayManager {
-    private IPresenter presenter;
+import heptathlon.domain.value.ControllerState;
 
-    public DisplayManager(IPresenter presenter) {
-        this.presenter = presenter;
+public class DisplayManager {
+    
+    public DisplayManager() {
+        this.start();
     }
 
-    
+    public void start() {
+        
+    }
 }
